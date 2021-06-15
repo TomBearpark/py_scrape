@@ -24,10 +24,6 @@ from selenium.common import exceptions
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.chrome.options import Options
 
-# send me a text if something goes wrong
-from twilio.rest import Client
-client = Client("AC3861620327ef49f8313593d982b3fb63", 
-	"2cd21796005f3c5be0a6feb4537c34bf")
 
 # Variables options
 
@@ -236,10 +232,6 @@ if __name__ == "__main__":
                 print('woooo, error resolved itself!')
                 continue
             except:
-                message = ("Something went wrong with " + ward_input + 
-                           " at date " + start_date)
-                client.messages.create(
-                    to="++44 7740 139523", from_="+14153600026", body=message)
                 
                 print('bad try! Check inputs, but probably its a page loading issue')
                 file_name =  (start_date_input.replace(".", "") + "_" + 
@@ -250,12 +242,7 @@ if __name__ == "__main__":
                 bad = True
                 break
     
-    
-    
-    if bad == False:
-        client.messages.create(
-                to="++44 7740 139523", from_="+14153600026", 
-                body=("great news, ward ran! " + message))
+
 
 
 
